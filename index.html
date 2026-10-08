@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Avenida Sura</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff5f7;
+            color: #333;
+        }
+
+        header {
+            background: #8c2449;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 15px;
+        }
+
+        main {
+            max-width: 950px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .producto {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #00000015;
+            text-align: center;
+        }
+
+        .precio {
+            color: #8c2449;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        button, .enlace {
+            display: inline-block;
+            background: #8c2449;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        button:hover, .enlace:hover {
+            background: #641932;
+        }
+
+        .resumen {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Boutique Avenida Sura</h1>
+        <p>Moda y estilo para cada ocasión</p>
+    </header>
+
+    <main>
+        <h2>Catálogo de prueba</h2>
+        <p>Estos productos y precios son ejemplos para probar la página.</p>
+
+        <section class="productos">
+            <article class="producto">
+                <h3>Blusa elegante</h3>
+                <p>Talla M</p>
+                <p class="precio">₡8.500</p>
+                <button type="button" onclick="agregarProducto(8500)">
+                    Agregar
+                </button>
+            </article>
+
+            <article class="producto">
+                <h3>Pantalón de mezclilla</h3>
+                <p>Talla 32</p>
+                <p class="precio">₡15.000</p>
+                <button type="button" onclick="agregarProducto(15000)">
+                    Agregar
+                </button>
+            </article>
+
+            <article class="producto">
+                <h3>Vestido casual</h3>
+                <p>Talla S</p>
+                <p class="precio">₡12.000</p>
+                <button type="button" onclick="agregarProducto(12000)">
+                    Agregar
+                </button>
+            </article>
+        </section>
+
+        <section class="resumen" aria-live="polite">
+            <h2>Resumen de prueba</h2>
+            <p>Productos agregados: <strong id="cantidad">0</strong></p>
+            <p>Total: <strong id="total">₡0</strong></p>
+
+            <button type="button" onclick="vaciarCarrito()">
+                Vaciar carrito
+            </button>
+        </section>
+
+        <p>
+            <a class="enlace"
+               href="https://sites.google.com/view/boutique-avenida-sura">
+                Visitar nuestro sitio en Google Sites
+            </a>
+        </p>
+    </main>
+
+    <footer>
+        Boutique Avenida Sura · Página de prueba
+    </footer>
+
+    <script>
+        let cantidad = 0;
+        let total = 0;
+
+        function actualizarResumen() {
+            document.getElementById("cantidad").textContent = cantidad;
+            document.getElementById("total").textContent =
+                "₡" + total.toLocaleString("es-CR");
+        }
+
+        function agregarProducto(precio) {
+            cantidad++;
+            total += precio;
+            actualizarResumen();
+        }
+
+        function vaciarCarrito() {
+            cantidad = 0;
+            total = 0;
+            actualizarResumen();
+        }
+    </script>
+</body>
+</html>
